@@ -1,0 +1,38 @@
+.donateContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.donate {   
+    display: grid;
+    max-width: 800px;
+}
+
+.paypal {
+    align-self: center;
+    justify-self: center;
+}
+
+.bitcoin {
+    display: flex;
+    align-items: center;
+}
+
+.address {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 25px;
+    color: goldenrod;
+}
+
+a:link {
+    color: #cd412b;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #cd412b;
+    text-decoration: none;
+}

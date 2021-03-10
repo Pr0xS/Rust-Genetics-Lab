@@ -1,0 +1,82 @@
+<div mat-dialog-content>
+    <div class="main">
+        <div class="mode">
+            Simulation Mode settings
+            <mat-radio-group aria-label="Select a Simulation Mode" [(ngModel)]="settings.mode" class="modeSelector">
+                <mat-radio-button value="auto" class="modeSelection" matTooltip="Automatic mode will do a less intesive search and stop when find some good samples" matTooltipShowDelay=1000>Automatic Mode</mat-radio-button>
+                <mat-radio-button value="manual" class="modeSelection" matTooltip="Manual mode will perform the simulation specified bellow" matTooltipShowDelay=1000>Manual Settings</mat-radio-button>
+            </mat-radio-group>
+    
+            <div class="automatic" *ngIf="settings.mode == 'auto'">
+                <div>
+                    <mat-form-field color="accent">
+                        <mat-label>Min score of sample</mat-label>
+                        <input type="number" step="0.1" matInput [(ngModel)]="settings.auto.minScoreSample" matTooltip="The minimun score needed for a sample to be considered a good sample" matTooltipShowDelay=1000>
+                    </mat-form-field>
+        
+                    <mat-form-field color="accent">
+                        <mat-label>Min number of good samples</mat-label>
+                        <input type="number" matInput [(ngModel)]="settings.auto.minGoodSamples" matTooltip="The minimun number of good samples before stoping the simulation" matTooltipShowDelay=1000>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="manual" *ngIf="settings.mode == 'manual'">
+                <div>
+                    <mat-form-field color="accent">
+                        <mat-label>Max number of samples per crossbreeding</mat-label>
+                        <mat-select [(value)]="settings.manual.maxNumCombinations" matTooltip="The maximum number of samples per crossbreeding to take into account" matTooltipShowDelay=1000>
+                            <mat-option *ngFor="let option of maxNumCombinationsOptions" [value]="option"> {{option}} </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+        
+                    <mat-form-field color="accent">
+                        <mat-label>Max number of generations</mat-label>
+                        <mat-select [(value)]="settings.manual.maxNumGenerations" matTooltip="The maximun number of generations to simulate" matTooltipShowDelay=1000>
+                            <mat-option *ngFor="let option of maxNumGenerationsOptions" [value]="option"> {{option}} </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        
+        <div class="generalSettings">
+            General Settings
+            <div class="genesWeightGroup">
+                <div class="genesWeigh">
+                    <div class="circle good">G</div>
+                    <mat-slider class="genesSlider" [(ngModel)]="settings.genesWeight['G']" (input)="settings.genesWeight['G'] = $event.value!" [max]="sliderMaxValue" [min]="sliderMinValue" [step]="sliderStepValue"></mat-slider>
+                    {{settings.genesWeight['G']}}
+                </div>
+                <div class="genesWeigh">
+                    <div class="circle good">Y</div>
+                    <mat-slider class="genesSlider" [(ngModel)]="settings.genesWeight['Y']" (input)="settings.genesWeight['Y'] = $event.value!" [max]="sliderMaxValue" [min]="sliderMinValue" [step]="sliderStepValue"></mat-slider>
+                    {{settings.genesWeight['Y']}}
+                </div>
+                <div class="genesWeigh">
+                    <div class="circle good">H</div>
+                    <mat-slider class="genesSlider" [(ngModel)]="settings.genesWeight['H']" (input)="settings.genesWeight['H'] = $event.value!" [max]="sliderMaxValue" [min]="sliderMinValue" [step]="sliderStepValue"></mat-slider>
+                    {{settings.genesWeight['H']}}
+                </div>
+                <div class="genesWeigh">
+                    <div class="circle bad">W</div>
+                    <mat-slider class="genesSlider" [(ngModel)]="settings.genesWeight['W']" (input)="settings.genesWeight['W'] = $event.value!" [max]="sliderMaxValue" [min]="sliderMinValue" [step]="sliderStepValue"></mat-slider>
+                    {{settings.genesWeight['W']}}
+                </div>
+                <div class="genesWeigh">
+                    <div class="circle bad">X</div>
+                    <mat-slider class="genesSlider" [(ngModel)]="settings.genesWeight['X']" (input)="settings.genesWeight['X'] = $event.value!" [max]="sliderMaxValue" [min]="sliderMinValue" [step]="sliderStepValue"></mat-slider>
+                    {{settings.genesWeight['X']}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div mat-dialog-actions class="buttons">
+    <button mat-raised-button (click)="onReset()">Reset to default</button>
+    <span class="spacer"></span>
+    <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="settings" cdkFocusInitial>Save</button>
+</div>

@@ -1,0 +1,34 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand:hover {
+    cursor: pointer;
+}
+
+.brand:focus {
+    outline:none;
+}
+
+.name {
+    padding-left: 20px;
+    font-size: 30px;
+    opacity: 50%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.button {
+    padding: 0 5px;
+}

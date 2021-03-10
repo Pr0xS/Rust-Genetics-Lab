@@ -1,0 +1,75 @@
+.seed:hover mat-card {
+    box-shadow: 0px 0px 3pt 2pt white;
+    left: .2em;
+    bottom: .2em;
+}
+
+.customSubtitle {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    justify-items: center;
+}
+
+.parentData {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.parentDetails {
+    font-size: 8pt;
+    opacity: 50%;
+}
+
+.parentDetailsItem {
+    margin: -8px 0;
+}
+
+::ng-deep .customHeader .mat-card-header-text {
+    width: 100%;
+    margin: 0px;
+}
+
+.customHeader {
+    text-align: center;
+}
+
+.customContent {
+    text-align: center;
+}
+
+.customDivider {
+    margin-top: -5px;
+    margin-bottom:5px;
+    border-top: 1px solid white;
+    opacity: 50%;
+
+}
+
+.customDivider2 {
+    margin-top: 5px;
+    margin-bottom:5px;
+    border-top: 1px solid white;
+    opacity: 50%;
+
+}
+
+.seed {
+    width: 300px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.initialSample {
+    opacity: 50%;
+}
+
+.contentSectionTitle {
+    opacity: 50%;
+    font-size: 14px;
+}
+
+.any {
+    opacity: 70%;
+}

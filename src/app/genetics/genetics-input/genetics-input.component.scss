@@ -1,0 +1,29 @@
+.inputContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+.title {
+    opacity: 60%;
+}
+
+.customMatForm {
+    width: 100%;
+}
+
+.customTextArea {
+    font-size: 16px;
+    font-family: monospace;
+    resize: both;
+    width: 100%;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 67% 33%;
+}
+
+.mybuttons {
+    width: 100%;
+}

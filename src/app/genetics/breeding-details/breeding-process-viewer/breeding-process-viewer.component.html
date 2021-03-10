@@ -1,0 +1,13 @@
+
+<mat-dialog-content>
+    <div #mainSample class="mainSample" (click)="focusMainSample()">
+        <div class="sample">
+            <app-seed-details [sample]="sample"></app-seed-details>
+            <div class="arrow" *ngIf="sample.parents.length"></div>
+        </div>
+    </div>
+
+    <div class="childSamples" *ngIf="sample.parents.length">
+        <app-viewer-print-childs [sample]="sample"></app-viewer-print-childs>
+    </div>
+</mat-dialog-content>

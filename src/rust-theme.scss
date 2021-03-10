@@ -1,0 +1,110 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$rust-red: (
+    50 : #f9e8e6,
+    100 : #f0c6bf,
+    200 : #e6a095,
+    300 : #dc7a6b,
+    400 : #d55e4b,
+    500 : #cd412b,
+    600 : #c83b26,
+    700 : #c13220,
+    800 : #ba2a1a,
+    900 : #ae1c10,
+    A100 : #ffe0de,
+    A200 : #ffb0ab,
+    A400 : #ff8078,
+    A700 : #ff685e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$rust-green: (
+    50 : #edf1e5,
+    100 : #d3ddbd,
+    200 : #b5c791,
+    300 : #97b065,
+    400 : #819f44,
+    500 : #6b8e23,
+    600 : #63861f,
+    700 : #587b1a,
+    800 : #4e7115,
+    900 : #3c5f0c,
+    A100 : #cdff93,
+    A200 : #b5ff60,
+    A400 : #9dff2d,
+    A700 : #91ff14,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$rust-warn: (
+    50 : #f4e7e6,
+    100 : #e4c2bf,
+    200 : #d29a95,
+    300 : #c0726b,
+    400 : #b3534b,
+    500 : #a5352b,
+    600 : #9d3026,
+    700 : #932820,
+    800 : #8a221a,
+    900 : #791610,
+    A100 : #ffb0ad,
+    A200 : #ff7f7a,
+    A400 : #ff4e47,
+    A700 : #ff362d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$palette-primary: mat-palette($rust-red);
+$palette-accent: mat-palette($rust-green);
+$palette-warn: mat-palette($rust-warn);
+
+$rust-theme: mat-dark-theme($palette-primary, $palette-accent, $palette-warn);
+
+@include angular-material-theme($rust-theme);

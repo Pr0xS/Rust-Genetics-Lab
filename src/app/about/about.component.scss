@@ -1,0 +1,20 @@
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.about {   
+    max-width: 800px;
+}
+
+a:link {
+    color: #cd412b;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #cd412b;
+    text-decoration: none;
+}

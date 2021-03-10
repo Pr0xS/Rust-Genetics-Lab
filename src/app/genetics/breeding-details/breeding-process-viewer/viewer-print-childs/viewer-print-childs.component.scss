@@ -1,0 +1,101 @@
+.parentsList {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-right: 5px;
+
+    display: flex;
+    // justify-content: center;
+}
+
+.leftMargin {
+    margin-left: auto;
+}
+
+.rightMargin {
+    margin-right: auto;
+}
+
+.sectionTitle {
+    opacity: 60%;
+    margin-left: 100px;
+    // margin-left: auto;
+    // margin-right: auto;
+}
+
+.sectionContent {
+    padding-bottom: 10px;
+}
+
+.hDivider{
+    border: 1px solid white;
+    opacity: 15%;
+}
+
+.vDivider {
+    opacity: 10%;
+    border-left: 2px solid white;
+    margin: 20px 10px 5px 0px;
+}
+
+
+.item {
+    display:inline-block;
+    vertical-align: top;
+    // padding: 10px 5px;
+    // min-height: 400px;
+}
+
+.item.selected ::ng-deep .seed mat-card{
+    box-shadow: 0px 0px 3pt 2pt olive;
+    left: .3em;
+    bottom: .3em;
+}
+
+@keyframes arrowAnimation {
+    0% {transform: translate(0) rotate(45deg); border-color: olive;}
+    25% {transform: translate(0, 0.3em) rotate(45deg); border-color: #a5352b;}
+    50% {transform: translate(0) rotate(45deg); border-color: olive;}
+    100% {transform: translate(0) rotate(45deg); border-color: olive;}
+}
+
+.arrow {
+    border: solid olive;
+    border-width: 0 5px 5px 0;
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: .1em;
+    margin-left: 147px;
+    transform: rotate(45deg);
+    // vertical-align: bottom;
+
+    animation-name: arrowAnimation;
+    animation-duration: 4s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    overflow: auto;
+    opacity: 100%;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    opacity: 0%;
+    // box-shadow: inset 0 0 5px grey; 
+    // border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #424242; 
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #686868; 
+}

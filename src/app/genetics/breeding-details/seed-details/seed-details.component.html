@@ -1,0 +1,70 @@
+<div class="seed">
+    <mat-card >
+        <mat-card-header class="customHeader">
+            <mat-card-title><app-beautifull-genetics [genetics]="sample.genes"></app-beautifull-genetics></mat-card-title>
+            <mat-card-subtitle>
+                <div class="customSubtitle">
+                    <div>Score: {{sample.value}}</div>
+                    <div>Chance: {{sample.probability}}%</div>
+                    <div>Gen: {{sample.generation}}</div>
+                </div>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <hr class="customDivider">
+
+        <mat-card-content class="customContent">
+            <div *ngIf="parentsData.length; else initialSample">
+                <div class="baseSample">
+                    <div class="contentSectionTitle">Base Sample</div>
+                    <div *ngIf="baseSampleData != undefined; else anySample" class="parentData">
+                        <app-beautifull-genetics [genetics]="baseSampleData.genes"></app-beautifull-genetics>
+                        <div class="parentDetails">
+                            <div class="parentDetailsItem">{{ baseSampleData.probability }}%</div>
+                            <div class="parentDetailsItem">Gen: {{ baseSampleData.generation }}</div>
+                        </div>
+                    </div>
+                    <ng-template #anySample>
+                        <div class="any">
+                            ANY
+                        </div>
+                    </ng-template>
+
+                </div>
+                <hr class="customDivider2">
+                <div class="parentSamplesGeneral">
+                    <div class="contentSectionTitle">Parents Samples</div>
+
+                    <div *ngFor="let parent of parentsData" class="parentData">
+                        <app-beautifull-genetics [genetics]="parent.genes"></app-beautifull-genetics>
+                        <div class="parentDetails">
+                            <div class="parentDetailsItem">{{ parent.probability }}%</div>
+                            <div class="parentDetailsItem">Gen: {{ parent.generation }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #initialSample>
+                <div class="initialSample">
+                    Its an initial Sample
+                </div>
+            </ng-template>
+        </mat-card-content>
+
+        <!-- <mat-card-content class="customContent">
+            <div *ngIf="parentsData.length; else initialSample">
+                <div *ngFor="let parent of parentsData" class="parentGeneral">
+                    <app-beautifull-genetics [genetics]="parent.genes"></app-beautifull-genetics>
+                    <div class="parentData">
+                        <div class="parentDataItem">{{parent.probability}}%</div>
+                        <div class="parentDataItem">Gen: {{parent.generation}}</div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #initialSample>
+                <div class="initialSample">
+                    Its an initial Sample
+                </div>
+            </ng-template>
+        </mat-card-content> -->
+    </mat-card>
+</div>

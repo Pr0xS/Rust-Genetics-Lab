@@ -1,0 +1,45 @@
+<hr class="hDivider">
+<div class="parentsList">
+    <div class="leftMargin"></div>
+
+    <div class="baseSample" *ngIf="sample.baseSample != 'ANY'">
+        <div class="sectionTitle">Base Sample</div>
+        <div class="sectionContent">
+            <div #test 
+                class="item"
+                [class.selected]="sample.baseSample === selectedSample"
+                id="-1"
+                (click)="onSelect(sample.baseSample); setChildToFocus(-1)">
+                <app-seed-details [sample]="getSpecies(sample.baseSample)"></app-seed-details>
+                <div class="arrow" *ngIf="sample.baseSample === selectedSample && getSpecies(sample.baseSample).parents.length"></div>
+            </div>
+
+        </div>
+    </div>
+    
+        <div class="vDivider" *ngIf="sample.baseSample != 'ANY'"></div>
+
+    <div class="parentsSamples">
+        <div class="sectionTitle">Parents Samples</div>
+        <div class="sectionContent">
+            <div #test 
+                *ngFor="let parent of sample.parents; let i = index"
+                class="item"
+                [class.selected]="parent === selectedSample"
+                id="{{i}}"
+                (click)="onSelect(parent); setChildToFocus(i)">
+                <app-seed-details [sample]="getSpecies(parent)"></app-seed-details>
+                <div class="arrow" *ngIf="parent === selectedSample && getSpecies(selectedSample).parents.length"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rightMargin"></div>
+</div>
+
+<div>
+    <app-viewer-print-childs
+        *ngIf="selectedSample && getSpecies(selectedSample).parents.length"
+        [sample]="getSpecies(selectedSample)"
+        (finishedLoading)="focus()"></app-viewer-print-childs>
+</div>

@@ -1,0 +1,15 @@
+// .mainContainer {
+//     flex-direction: column;
+//     min-height: calc(100% - 64px);
+//     margin: 20px 30px;
+//     display: grid;
+//     grid-template-columns: minmax(auto, 300px) 1fr;
+// }
+
+.geneticsAppContainer {
+    height: calc(100% - 40px);
+    margin: 20px 30px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    box-sizing: border-box;
+}

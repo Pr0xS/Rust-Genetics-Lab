@@ -1,0 +1,11 @@
+<span *ngFor="let gen of genetics.split(''); let i = index">
+    <div class="circle" 
+        [class.good]="gen == 'G' || gen == 'Y' || gen == 'H'"
+        [class.bad]="gen == 'W' || gen == 'X'">
+        {{gen}}
+    </div>
+    <div class="separator" *ngIf="i != genetics.split('').length - 1">
+         - 
+    </div>
+</span>
+<!-- {{genetics}} -->

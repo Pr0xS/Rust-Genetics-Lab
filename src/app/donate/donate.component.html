@@ -1,0 +1,37 @@
+<div class="donateContainer">
+    <div class="donate">
+        <p>Donating is always optional and only if you found the App interesing and useful</p>
+        <p>All donationgs will help me improving the app in the future</p>
+
+        <br>
+        <br>
+
+        <p>You can do it using Paypal:</p>
+        <div class="paypal">
+            <form #form action="https://www.paypal.com/donate" method="post" target="_blank">
+                <input type="hidden" name="business" value="C29ENRASFSEDC" />
+                <input type="hidden" name="item_name" value="For keep improving the app, and if needed get a better hosting" />
+                <input type="hidden" name="currency_code" value="EUR" />
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" (click)="form.submit()" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+            </form>  
+        </div>
+        
+        <br>
+        <br>
+    
+        <p>And since cyptocurrencies are popular you can also support the app with them!!</p>
+
+        <div class="bitcoin">
+            <img src="/assets/images/bitcoin.png" alt="bitcoin logo" height="50px">
+            <div class="address">
+                {{bitcoinAddress}}
+            </div>
+
+            <button mat-icon-button color="warn" aria-label="Copy Bitcoin Address to clipboard" matTooltip="Copy Bitcoin Address to clipboard" [cdkCopyToClipboard]="bitcoinAddress">
+                <mat-icon>content_paste</mat-icon>
+            </button>
+        </div>
+
+    </div>        
+</div>

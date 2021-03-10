@@ -1,0 +1,162 @@
+<!-- <div class="mainContainer">
+
+    <div *ngIf="availableSpecies.length == 0 && !runningSimulation; else simulation">
+        <div class="noSimulation">
+            Add some samples and press "Simulation"
+        </div>
+    </div>
+    <ng-template #simulation>
+        <div class="tittle">
+            <h1>Simulation Results</h1>
+        </div>
+        <form class="filter-form">
+            <mat-form-field color="accent" class="searchBar">
+                <mat-label>Genes Search</mat-label>
+                <input type="text"
+                    matInput
+                    [(ngModel)]="searchString"
+                    (ngModelChange)="onFiltersChange()"
+                    matTooltip="Search for specific genes"
+                    matTooltipShowDelay=1000
+                    name="searchString">
+            </mat-form-field>
+    
+            <mat-form-field color="accent" class="nGenes">
+                <mat-label>Number of G's</mat-label>
+                <mat-select [(ngModel)]="nGSelected" name="numG" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of G's to show" matTooltipShowDelay=1000>
+                    <mat-option>Any</mat-option>
+                    <mat-option *ngFor="let number of nGenesOptions"
+                        [value]="number"
+                        [disabled]="number > nGenesAvailables('G')">{{ number }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field color="accent" class="nGenes">
+                <mat-label>Number of Y's</mat-label>
+                <mat-select [(ngModel)]="nYSelected" name="numY" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of Y's to show" matTooltipShowDelay=1000>
+                    <mat-option>Any</mat-option>
+                    <mat-option *ngFor="let number of nGenesOptions"
+                        [value]="number"
+                        [disabled]="number > nGenesAvailables('Y')">{{ number }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field color="accent" class="nGenes">
+                <mat-label>Number of H's</mat-label>
+                <mat-select [(ngModel)]="nHSelected" name="numH" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of H's to show" matTooltipShowDelay=1000>
+                    <mat-option>Any</mat-option>
+                    <mat-option *ngFor="let number of nGenesOptions"
+                        [value]="number"
+                        [disabled]="number > nGenesAvailables('H')">{{ number }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+        </form>
+
+        <div class="dataContainer">
+            <div class="loading" *ngIf="runningSimulation">
+                <app-loading-simulation></app-loading-simulation>
+            </div>
+            
+            <ul class="samples">
+                <li *ngFor="let sample of filteredSpecies.slice(0,maxSpeciesToShow)"
+                    [class.selected]="sample === selectedSample"
+                    (click)="onSelect(sample)">
+                    <app-seed-details [sample]="sample"></app-seed-details>
+                </li>
+                <button
+                    *ngIf="filteredSpecies.length > maxSpeciesToShow"
+                    mat-stroked-button
+                    (click)="onLoadMore()"
+                    class="loadMoreButton">
+                    Load More
+                </button>
+            </ul>
+        </div>
+    </ng-template>
+
+</div> -->
+
+<div class="resultsContainer">
+    <div class="noSimulation" *ngIf="availableSpecies.length == 0 && !runningSimulation; else simulation">
+        Add some samples and press "Simulation" 
+    </div>
+
+
+    <ng-template #simulation>
+        <div class="simulation">
+
+            <div class="title">
+                <h1>Simulation Results</h1>
+            </div>
+        
+            <div class="filters">
+                <form class="filters-form">
+                    <mat-form-field color="accent" class="searchBar">
+                        <mat-label>Genes Search</mat-label>
+                        <input type="text"
+                            matInput
+                            [(ngModel)]="searchString"
+                            (ngModelChange)="onFiltersChange()"
+                            matTooltip="Search for specific genes"
+                            matTooltipShowDelay=1000
+                            name="searchString">
+                    </mat-form-field>
+            
+                    <mat-form-field color="accent" class="nGenes">
+                        <mat-label>Number of G's</mat-label>
+                        <mat-select [(ngModel)]="nGSelected" name="numG" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of G's to show" matTooltipShowDelay=1000>
+                            <mat-option>Any</mat-option>
+                            <mat-option *ngFor="let number of nGenesOptions"
+                                [value]="number"
+                                [disabled]="number > nGenesAvailables('G')">{{ number }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            
+                    <mat-form-field color="accent" class="nGenes">
+                        <mat-label>Number of Y's</mat-label>
+                        <mat-select [(ngModel)]="nYSelected" name="numY" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of Y's to show" matTooltipShowDelay=1000>
+                            <mat-option>Any</mat-option>
+                            <mat-option *ngFor="let number of nGenesOptions"
+                                [value]="number"
+                                [disabled]="number > nGenesAvailables('Y')">{{ number }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            
+                    <mat-form-field color="accent" class="nGenes">
+                        <mat-label>Number of H's</mat-label>
+                        <mat-select [(ngModel)]="nHSelected" name="numH" (selectionChange)="onFiltersChange()" matTooltip="Select Minimun number of H's to show" matTooltipShowDelay=1000>
+                            <mat-option>Any</mat-option>
+                            <mat-option *ngFor="let number of nGenesOptions"
+                                [value]="number"
+                                [disabled]="number > nGenesAvailables('H')">{{ number }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+            
+                </form>
+            </div>
+        
+            <div class="content">
+                <div class="loading" *ngIf="runningSimulation">
+                    <app-loading-simulation></app-loading-simulation>
+                </div>
+                
+                <ul class="samples">
+                    <li *ngFor="let sample of filteredSpecies.slice(0,maxSpeciesToShow)"
+                        [class.selected]="sample === selectedSample"
+                        (click)="onSelect(sample)">
+                        <app-seed-details [sample]="sample"></app-seed-details>
+                    </li>
+                    <button
+                        *ngIf="filteredSpecies.length > maxSpeciesToShow"
+                        mat-stroked-button
+                        (click)="onLoadMore()"
+                        class="loadMoreButton">
+                        Load More
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </ng-template>
+
+</div>

@@ -1,0 +1,248 @@
+// .mainContainer {
+//     margin-left: 30px;
+//     height: 100%;
+// }
+
+// .dataContainer {
+//     display: flex;
+//     align-items: center;
+//     height: 100%;
+// }
+
+// .noSimulation {
+//     text-align: center;
+//     padding-top: 200px;
+//     font-size: 30px;
+//     opacity: 50%;
+// }
+
+// .tittle {
+//     opacity: 60%;
+// }
+
+// .filter-form {
+//     display: grid;
+//     width: 100%;
+//     grid-template-columns: 40% 20% 20% 20%;
+// }
+
+// .samples {
+//     width: 300px;
+//     list-style-type: none;
+//     margin: 0 auto;
+// }
+
+// .samples li {
+//     margin-bottom: 10px;
+//     cursor: pointer;
+//     position: relative;
+// }
+
+// .samples li.selected ::ng-deep .seed mat-card {
+//     box-shadow: 0px 0px 3pt 2pt olive;
+//     left: .3em;
+//     bottom: .3em;
+// }
+
+// .loadMoreButton {
+//     margin: 0 auto;
+//     width: 100%;
+// }
+
+// ::ng-deep .mat-dialog-container {
+//     background-color: #303030;
+// }
+
+// // .samples li:hover {
+// //     outline: 3px solid olive;
+// //     box-shadow: 3px 3px 3pt 3pt olive;
+// // }
+
+
+
+
+
+
+
+
+// .mainContainer {
+//     display: flex;
+//     height: 100%;
+//     margin-left: 30px;
+//     justify-content: center;
+//     background-color: blue;
+// }
+
+// .noSimulation {
+//     align-self: center;
+//     font-size: 30px;
+//     opacity: 50%;
+// }
+
+// .simulation {
+//     display: grid;
+//     width: 100%;
+//     height: 100%;
+//     grid-template-rows: auto 1fr;
+//     grid-template-columns: 1fr;
+//     grid-template-areas: 'title' 'content';
+//     background-color: sandybrown;
+// }
+
+// .title {
+//     grid-area: title;
+//     opacity: 60%;
+// }
+
+// .content {
+//     height: 100%;
+//     overflow: auto;
+//     grid-area: content;
+//     background-color: skyblue;
+// }
+
+// .filters {
+//     display: grid;
+//     width: 100%;
+//     grid-template-columns: 40% 20% 20% 20%;
+// }
+
+// .data {
+//     height: 100%;
+//     display: grid;
+//     grid-template-rows: 1fr;
+//     grid-template-columns: 1fr;
+//     background-color: rebeccapurple;
+// }
+
+// .loading {
+//     width: 100%;
+//     align-self: center;
+//     background-color: yellow;
+// }
+
+// .samples {
+//     grid-area: 'data';
+//     width: 300px;
+//     list-style-type: none;
+//     margin: 0 auto;
+// }
+
+// .samples li {
+//     margin-bottom: 10px;
+//     cursor: pointer;
+//     position: relative;
+// }
+
+// .samples li.selected ::ng-deep .seed mat-card {
+//     box-shadow: 0px 0px 3pt 2pt olive;
+//     left: .3em;
+//     bottom: .3em;
+// }
+
+// ::ng-deep .mat-dialog-container {
+//     background-color: #303030;
+// }
+
+// .loadMoreButton {
+//     margin: 0 auto;
+//     width: 100%;
+// }
+
+
+
+
+// .mainContainer {
+//     display: grid;
+//     width: 100%;
+//     height: 100%;
+//     grid-template-rows: auto 1fr;
+//     grid-template-columns: 1fr;
+//     grid-template-areas: 'title' 'content';;
+//     background-color: sandybrown;
+// }
+
+
+
+// .title {
+//     grid-area: title;
+// }
+
+// .content {
+//     grid-area: content;
+//     background-color: slategray;
+// }
+
+.resultsContainer {
+    margin-left: 30px;
+    display: grid;
+    height: 100%;
+    width: calc(100% - 30);
+}
+
+.noSimulation {
+    align-self: center;
+    text-align: center;
+    font-size: 30px;
+    opacity: 50%;
+}
+
+.simulation {
+    display: grid;
+    height: 100%;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 1fr;
+}
+
+.title {
+    opacity: 60%;
+}
+
+.filters {
+    width: 100%;
+}
+
+.filters-form {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 40% 20% 20% 20%
+}
+
+.content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.loading {
+    align-self: center;
+    justify-self: center;
+}
+
+.samples {
+    width: 300px;
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+.samples li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.samples li.selected ::ng-deep .seed mat-card {
+    box-shadow: 0px 0px 3pt 2pt olive;
+    left: .3em;
+    bottom: .3em;
+}
+
+::ng-deep .mat-dialog-container {
+    background-color: #303030;
+}
+
+.loadMoreButton {
+    margin: 0 auto;
+    width: 100%;
+}

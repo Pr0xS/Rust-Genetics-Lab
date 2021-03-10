@@ -1,0 +1,24 @@
+
+<div class="inputContainer">
+    <div class="title">
+        <h1>My Samples</h1>
+    </div>
+    <mat-form-field class="customMatForm">
+        <textarea
+            matInput
+            class="customTextArea"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="30"
+            ngModel (ngModelChange)="toArray($event)"
+            [ngModel]="samplesToTextArea(samples)">
+        </textarea>
+    </mat-form-field>
+    
+    <div class="buttons">
+            <button mat-raised-button color="primary" class="mybuttons" (click)="simulation()">Simulation</button>
+            <button mat-raised-button color="accent" class="mybuttons" (click)="onOpenOptions()">Options</button>
+
+    </div>
+</div>
+
