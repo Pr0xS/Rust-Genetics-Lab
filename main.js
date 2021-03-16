@@ -238,19 +238,17 @@ const environment = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingSimulationComponent", function() { return LoadingSimulationComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/progress-spinner */ "Xa2L");
-
 
 class LoadingSimulationComponent {
     constructor() { }
     ngOnInit() { }
 }
 LoadingSimulationComponent.ɵfac = function LoadingSimulationComponent_Factory(t) { return new (t || LoadingSimulationComponent)(); };
-LoadingSimulationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoadingSimulationComponent, selectors: [["app-loading-simulation"]], decls: 2, vars: 0, consts: [[1, "loading"]], template: function LoadingSimulationComponent_Template(rf, ctx) { if (rf & 1) {
+LoadingSimulationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoadingSimulationComponent, selectors: [["app-loading-simulation"]], decls: 2, vars: 0, consts: [[1, "loading"], ["src", "./assets/images/crossbreeding.gif", "alt", "Crossbreeding in process"]], template: function LoadingSimulationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "mat-spinner");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, directives: [_angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_1__["MatSpinner"]], styles: [".loading[_ngcontent-%COMP%] {\n  margin: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL2xvYWRpbmctc2ltdWxhdGlvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7QUFDSiIsImZpbGUiOiJsb2FkaW5nLXNpbXVsYXRpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9hZGluZyB7XG4gICAgbWFyZ2luOiBhdXRvO1xufSJdfQ== */"] });
+    } }, styles: [".loading[_ngcontent-%COMP%] {\n  margin: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL2xvYWRpbmctc2ltdWxhdGlvbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7QUFDSiIsImZpbGUiOiJsb2FkaW5nLXNpbXVsYXRpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9hZGluZyB7XG4gICAgbWFyZ2luOiBhdXRvO1xufSJdfQ== */"] });
 
 
 /***/ }),
@@ -727,9 +725,12 @@ class GeneticsComponent {
         this.runningSimulation = false;
     }
     ngOnInit() {
-        this.geneticsService.runningSimulation_Subject.subscribe(runningSimulation => {
+        this.runningSimulationSubscription = this.geneticsService.runningSimulation_Subject.subscribe(runningSimulation => {
             this.runningSimulation = runningSimulation;
         });
+    }
+    ngOnDestroy() {
+        this.runningSimulationSubscription.unsubscribe();
     }
 }
 GeneticsComponent.ɵfac = function GeneticsComponent_Factory(t) { return new (t || GeneticsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_genetics_service__WEBPACK_IMPORTED_MODULE_1__["GeneticsService"])); };
@@ -1752,8 +1753,12 @@ class BreedingDetailsComponent {
     ngOnInit() {
         this.subscribeToResults();
     }
+    ngOnDestroy() {
+        this.newSamplesSubscription.unsubscribe();
+        this.runningSimulationSubscription.unsubscribe();
+    }
     subscribeToResults() {
-        this.geneticsService.getNewSamples()
+        this.newSamplesSubscription = this.geneticsService.getNewSamples()
             .subscribe(samplesDB => {
             this.samplesDB = samplesDB;
             this.availableSpecies = [];
@@ -1764,7 +1769,7 @@ class BreedingDetailsComponent {
             this.maxSpeciesToShow = 5;
             // this.onLoadMore();
         });
-        this.geneticsService.runningSimulation_Subject.subscribe(simulation => this.runningSimulation = simulation);
+        this.runningSimulationSubscription = this.geneticsService.runningSimulation_Subject.subscribe(simulation => this.runningSimulation = simulation);
     }
     onSelect(sample) {
         this.selectedSample = sample;
