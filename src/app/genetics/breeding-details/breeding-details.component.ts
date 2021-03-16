@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -16,7 +16,11 @@ import { BreedingProcessViewerComponent } from './breeding-process-viewer/breedi
     templateUrl: './breeding-details.component.html',
     styleUrls: ['./breeding-details.component.scss']
 })
-export class BreedingDetailsComponent implements OnInit {
+export class BreedingDetailsComponent implements OnInit, OnDestroy {
+    newSamplesSubscription!: Subscription;
+    runningSimulationSubscription!: Subscription
+
+
     samplesDB: {[species: string]: Species[]};
     
     selectedSample!: Species;
@@ -46,8 +50,13 @@ export class BreedingDetailsComponent implements OnInit {
         this.subscribeToResults();
     }
 
+    ngOnDestroy(): void {
+        this.newSamplesSubscription.unsubscribe()
+        this.runningSimulationSubscription.unsubscribe()
+    }
+
     subscribeToResults() {
-        this.geneticsService.getNewSamples()
+        this.newSamplesSubscription = this.geneticsService.getNewSamples()
             .subscribe(samplesDB => {
                 this.samplesDB = samplesDB;
 
@@ -61,7 +70,7 @@ export class BreedingDetailsComponent implements OnInit {
                 // this.onLoadMore();
             });
 
-        this.geneticsService.runningSimulation_Subject.subscribe(simulation => this.runningSimulation = simulation);
+        this.runningSimulationSubscription = this.geneticsService.runningSimulation_Subject.subscribe(simulation => this.runningSimulation = simulation);
     }
 
     onSelect(sample: Species) {
