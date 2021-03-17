@@ -33,7 +33,6 @@ export class GeneticsService {
         this.speciesDB_Subject.next({});
 
         geneticsWorker.onmessage = ({ data }) => {
-            console.log(data)
             if (data.hasOwnProperty("speciesDB")) {
                 this.speciesDB = data.speciesDB;
                 this.updateChanges();
@@ -47,7 +46,6 @@ export class GeneticsService {
 
     updateChanges() {
         this.speciesDB_Subject.next(this.speciesDB);
-        console.log(this.speciesDB);
     }
 
     updateStatusMessage(message: {nCombinations: number, nGen: number}) {

@@ -58,29 +58,12 @@ class Genetics {
                 this.startSamplesAnalysis(nCombinations);
                 this.reorganizeSpeciesDB();
                 
-                console.log(`Combiantons: ${nCombinations}, Generation: ${nGen}`)
                 postMessage({status: {nCombinations: nCombinations, nGen: nGen}})
                 if (this.enoughGoodSamples(numGoodSamples, minSampleValue)) {
                     return
                 }
             }
         }
-
-        // // Combiantions of 6 and 7. Generations 1, 2
-        // for (let nGen = 1; nGen <= 2; nGen++) {
-        //     if (nGen > 1) {
-        //         this.getNextGenSamples();
-        //     }
-        //     for (let nCombinations = 6; nCombinations <= 7; nCombinations++) {
-        //         console.log(`Combiantons: ${nCombinations}, Generation: ${nGen}`)
-        //         this.startSamplesAnalysis(nCombinations);
-        //         this.reorganizeSpeciesDB();
-  
-        //         if (this.enoughGoodSamples(numGoodSamples, minSampleValue)) {
-        //             return
-        //         }
-        //     }
-        // }
     }
 
     startManualAnalisys(maxCombinations: number, maxGeneration: number) {
@@ -150,23 +133,6 @@ class Genetics {
     }
   
     getNextGenSamples(topBestSamplesToAdd: number = 10) {
-        // const nSamplesToAdd = topBestSamplesToAdd
-        // let newSamples = Object.keys(this.speciesDB)
-        
-        // let samplesAdded = 0;
-        // newSamples.some(sample => {
-        //     if (samplesAdded >= nSamplesToAdd) {
-        //         return true;
-        //     }
-  
-        //     if (!this.samples.has(sample)) {
-        //         this.samples.add(sample);
-        //         samplesAdded++;
-        //     }
-  
-        //     return false;
-        // });
-
 
         let gArray: number[] = new Array(6).fill(0);
         let yArray: number[] = new Array(6).fill(0);
@@ -181,17 +147,11 @@ class Genetics {
             }
         })
 
-        console.log(`gArray: ${gArray}  yArray: ${yArray}`)
-
-        console.log(this.samples)
-
         let maxTries = 15;
         let gAdded = 0;
         while (gAdded <= 5 && maxTries) {
             let min = gArray.indexOf(Math.min(...gArray));
-            // console.log(min)
             if ( min < 2) {
-                // console.log("min detected")
                 // if there are 0 or just 1 g Its not possible to obtain new samples
                 gArray[min] += 9999;
             } else {
@@ -205,20 +165,14 @@ class Genetics {
                 }
             }
 
-            // console.log("gArray")
-            // console.log(gArray)
-
             maxTries--;
-            // console.log(`added: ${added} maxTries: ${maxTries}`)
         }
 
         maxTries = 15;
         let yAdded = 0;
         while (yAdded <= 5 && maxTries) {
             let min = yArray.indexOf(Math.min(...yArray));
-            // console.log(min)
             if ( min < 2) {
-                // console.log("min detected")
                 // if there are 0 or just 1 g Its not possible to obtain new samples
                 yArray[min] += 9999;
             } else {
@@ -232,16 +186,9 @@ class Genetics {
                 }
             }
 
-            // console.log("yArray")
-            // console.log(yArray)
-
             maxTries--;
 
-            // console.log(`added: ${added} maxTries: ${maxTries}`)
         }
-
-        console.log(`gArray: ${gArray}  yArray: ${yArray}`)
-        console.log(`samples added: ${gAdded + yAdded}`)
     }
 
     _addNewNextGenSample(regex: string) {
@@ -284,7 +231,6 @@ class Genetics {
         if (samples.length <= minNumberOfGoodSamples) {
             return false;
         }
-        console.log(`${minNumberOfGoodSamples}th sample score: ${this.speciesDB[samples[minNumberOfGoodSamples]][0].value}`);
         return this.speciesDB[samples[minNumberOfGoodSamples]][0].value >= minScore;
     }
   
