@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build4GHPages": "ng build --prod --base-href /Rust-Genetics-Lab/ --deploy-url /Rust-Genetics-Lab/",
-    "deploy2GHPages": "git add dist/* && git commit -m 'push new version' && git push && git subtree push --prefix dist origin gh-pages"
+    "deploy2GHPages": "git add dist/ && git commit -m 'push new version' && git push && git subtree push --prefix dist origin gh-pages"
   },
   "private": true,
   "dependencies": {
