@@ -17,6 +17,7 @@ import { SeedDetailsComponent } from './genetics/breeding-details/seed-details/s
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DonateComponent } from './donate/donate.component'
+import { StatusComponent } from './genetics/breeding-details/loading-simulation/status/status.component'
 
 import { MaterialModule } from './material.module'
 
@@ -34,7 +35,8 @@ import { MaterialModule } from './material.module'
     LoadingSimulationComponent,
     AboutComponent,
     NavbarComponent,
-    DonateComponent
+    DonateComponent,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,

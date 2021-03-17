@@ -13,7 +13,7 @@ addEventListener('message', ({ data }) => {
     genetics.startNewAnalisys(data.samples);
     speciesDB = genetics.getSpeciesDB()
 
-    postMessage(speciesDB);
+    postMessage({speciesDB: speciesDB});
 });
 
 class Genetics {
@@ -59,6 +59,7 @@ class Genetics {
                 this.reorganizeSpeciesDB();
                 
                 console.log(`Combiantons: ${nCombinations}, Generation: ${nGen}`)
+                postMessage({status: {nCombinations: nCombinations, nGen: nGen}})
                 if (this.enoughGoodSamples(numGoodSamples, minSampleValue)) {
                     return
                 }

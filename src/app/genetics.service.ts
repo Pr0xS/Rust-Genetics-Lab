@@ -11,12 +11,14 @@ export class GeneticsService {
     settings: Settings;
 
     runningSimulation_Subject = new BehaviorSubject<boolean>(false);
+    statusSimulation_Subject = new BehaviorSubject<{nCombinations: number, nGen: number}>({nCombinations: 0, nGen: 0});
 
     speciesDB: {[species: string]: Species[]}
     speciesDB_Subject = new BehaviorSubject<{[species: string]: Species[]}>({})
 
     constructor() {
         this.speciesDB = {};
+        // Deep object copy
         this.settings = JSON.parse(JSON.stringify(defaultSettings))
     }
 
@@ -31,9 +33,14 @@ export class GeneticsService {
         this.speciesDB_Subject.next({});
 
         geneticsWorker.onmessage = ({ data }) => {
-            this.speciesDB = data;
-            this.updateChanges();
-            this.runningSimulation_Subject.next(false);
+            console.log(data)
+            if (data.hasOwnProperty("speciesDB")) {
+                this.speciesDB = data.speciesDB;
+                this.updateChanges();
+                this.runningSimulation_Subject.next(false);
+            } else if (data.hasOwnProperty("status")) {
+                this.updateStatusMessage(data.status)
+            }
         };
         geneticsWorker.postMessage({settings: settings, samples: samples});
     }
@@ -41,6 +48,10 @@ export class GeneticsService {
     updateChanges() {
         this.speciesDB_Subject.next(this.speciesDB);
         console.log(this.speciesDB);
+    }
+
+    updateStatusMessage(message: {nCombinations: number, nGen: number}) {
+        this.statusSimulation_Subject.next({nCombinations: message.nCombinations, nGen: message.nGen})
     }
 
     getNewSamples(): Observable<{[species: string]: Species[]}> {

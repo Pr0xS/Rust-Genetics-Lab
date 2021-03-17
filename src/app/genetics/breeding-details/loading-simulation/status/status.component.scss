@@ -1,0 +1,9 @@
+.statusContainer {
+    display: grid;
+    grid-template-rows: auto;
+}
+
+.statusInfo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
