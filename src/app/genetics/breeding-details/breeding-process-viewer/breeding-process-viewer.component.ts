@@ -27,6 +27,5 @@ export class BreedingProcessViewerComponent implements OnInit {
 
     focusMainSample() {
         this.mainSample.nativeElement.scrollIntoView({ behavior: "smooth", inline: "center", block: "center"})
-        console.log("doing something")
     }
 }

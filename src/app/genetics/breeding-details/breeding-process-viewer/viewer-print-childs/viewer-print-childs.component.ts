@@ -35,19 +35,15 @@ export class ViewerPrintChildsComponent implements OnInit {
     onSelect(sample: string) {
         this.selectedSample = "";
         this.selectedSample = sample;
-        console.log(sample);
     }
 
     setChildToFocus(id: number) {
         this.childToFocus = id;
-        console.log("setChildToFocus")
         this.focus();
     }
 
     focus() {
-        console.log("focus")
         let focusTo = this.testElement.find(element => element.nativeElement.id == this.childToFocus)
-        console.log(focusTo)
         focusTo?.nativeElement.scrollIntoView({ behavior: "smooth", inline: "center", block: "center"})
     }
 
