@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build4GHPages": "ng build --prod --base-href /Rust-Genetics-Lab/ --deploy-url /Rust-Genetics-Lab/",
-    "deploy2GHPages": "git add dist/ && git commit -m 'push new version' && git push && git subtree push --prefix dist origin gh-pages"
+    "build4GHPages": "ng build --prod --base-href /Rust-Genetics-Lab/ --deploy-url /Rust-Genetics-Lab/ && cp dist/index.html dist/404.html",
+    "deploy2GHPages": "git add dist/ && git commit -m 'push new version' && git push && git subtree push --prefix dist origin gh-pages",
+    "doIt": "npm run build4GHPages && npm run deploy2GHPages"
   },
   "private": true,
   "dependencies": {
